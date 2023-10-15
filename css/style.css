@@ -15,6 +15,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
     background-image: linear-gradient(to bottom, hsl(273, 75%, 66%), hsl(240, 73%, 65%));
 }
 /* 
@@ -34,13 +35,37 @@ h1 {
     text-align: center;
 }
 
-.icon {
-    transform: rotate(180deg);
-    transition: all 0.2s ease;
+h2 {
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
 }
 
-.hidden {
-    display: none;
+.accordian-item p {
+    height: 0;
+    overflow: hidden;
+}
+
+
+.accordian-item.active h2 {
+    font-weight: 700;
+}
+
+.container.active h2::after {
+    content: url("./assets/images/icon-arrow-down.svg");
+    transform: scaleY(-1);
+}
+
+.accordian-item.active p {
+    height: 100%;
+    margin-top: .75rem;
+}
+
+.icon {
+    /* transform: rotate(180deg); */
+    transition: all 0.2s ease;
+    margin-left: 5.5rem;
 }
 
 
@@ -54,6 +79,7 @@ h1 {
     background-color: white;
     padding: 8.5rem 2rem 2rem 2rem;
     border-radius: 2rem;
+    position: relative;
 }
 
 .accordian-heading {
