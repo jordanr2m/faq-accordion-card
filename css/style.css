@@ -15,105 +15,163 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    position: relative;
+    /* position: relative; */
     background-image: linear-gradient(to bottom, hsl(273, 75%, 66%), hsl(240, 73%, 65%));
 }
-/* 
-div.top-image {
-    background: url("../images/illustration-woman-online-mobile.svg") center no-repeat;
-    width: 100%;
-    height: 100%;
-    /* background-size: contain; */
-    /* position: relative;
-    z-index: 100;
-    bottom: -5.5rem;
-    filter: drop-shadow(hsl(240, 100%, 96%) 0rem 2rem);
-} */ 
+
+#mobile-image,
+#mobile-shadow {
+    width: 75%;
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#mobile-shadow {
+    top: 5rem;
+}
+
+#desktop-image,
+#desktop-shadow {
+    display: none;
+}
+
+
+.content-wrapper {
+    width: 90%;
+    max-width: 375px;
+    background-color: white;
+    padding: 11rem 2rem 2rem 2rem;
+    border-radius: 2rem;
+    position: relative;
+    /* Must set position to relative to get images to work */
+}
+
+.accordian {
+    margin: 2rem auto;
+}
 
 h1 {
     font-size: 3rem;
     text-align: center;
 }
 
-h2 {
-    font-size: 14px;
-    font-weight: 400;
-    cursor: pointer;
+/* Set position to relative in order to position children h2 relative to it */
+.accoridan .accordian-item {
     position: relative;
 }
 
+.accordian h2 {
+    font-weight: 400;
+    cursor: pointer;
+    padding-top: 0.75rem;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.accordian-item h2:after {
+    content: url("../images/icon-arrow-down.svg");
+    position: absolute;
+    right: 0;
+    /* aligns to the right-hand side */
+}
+
+.accordian-item h2:hover {
+    color: hsl(14, 88%, 65%);
+}
+
+/* p is hidden by default */
 .accordian-item p {
     height: 0;
     overflow: hidden;
 }
 
-
-.accordian-item.active h2 {
-    font-weight: 700;
+.underline {
+    border-bottom: 1px solid hsl(240, 5%, 91%);
 }
 
-.container.active h2::after {
-    content: url("./assets/images/icon-arrow-down.svg");
+/* ============= Active States ============= */
+.accordian-item.active h2 {
+    font-weight: 700;
+    color: hsl(238, 29%, 16%);
+}
+
+/* Rotate Arrow down when active */
+.accordian-item.active h2:after {
+    content: url("../images/icon-arrow-down.svg");
     transform: scaleY(-1);
 }
 
 .accordian-item.active p {
     height: 100%;
     margin-top: .75rem;
-}
-
-.icon {
-    /* transform: rotate(180deg); */
-    transition: all 0.2s ease;
-    margin-left: 5.5rem;
-}
-
-
-.accordian-content-text {
     color: hsl(240, 6%, 50%);
 }
 
-.container {
-    width: 90%;
-    max-width: 375px;
-    background-color: white;
-    padding: 8.5rem 2rem 2rem 2rem;
-    border-radius: 2rem;
-    position: relative;
-}
 
-.accordian-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    /* z-index: 200;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none; */
-}
-
-.accordian-heading:hover,
-.accordian-heading:active {
-    cursor: pointer;
-}
-
-
-.accordian-heading-text {
-    padding-top: 0.75rem;
-    font-size: 1.1rem;
-}
-
-.underline {
-    border-bottom: 1px solid hsl(240, 6%, 75%);
-}
-
+/* Attribution Styles */
 .attribution { 
     font-size: 11px; 
-    text-align: center; 
+    text-align: center;
+    padding-top: 1rem;
 }
 
 .attribution a { 
     color: hsl(228, 45%, 44%); 
+}
+
+
+/** Media Queries for Desktop and Tablet **/
+@media only screen and (min-width: 786px) {
+
+    .content-wrapper {
+      max-width: 750px;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      overflow: hidden;
+    }
+
+    .image-container {
+        position: relative;
+    }
+
+    #desktop-image {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    #desktop-shadow {
+        display: block;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: -15%;
+        top: 50%;
+        width: 200%;
+    }
+
+    #mobile-image,
+    #mobile-shadow {
+        display: none;
+    }
+
+    .accordian {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .accordian h1 {
+        text-align: left;
+    }
+
+    .attribution {
+        display: none;
+    }
+
 }

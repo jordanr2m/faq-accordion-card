@@ -1,12 +1,13 @@
 const accordianItems = document.querySelectorAll(".accordian-item");
-// console.log(accordianItems);
+console.log(accordianItems);
+// No period before class name when using getElementsByClassName! Can also use getElementsByClassName("accordian-item") instead of querrySelectorAll
 
 
-// Code to make a simple accordian
-for (i = 0; i < accordianItems.length; i++) {
+// Code to make a simple accordian. For every container in accordion, Add a listener for click, If clicked, add class active
+for (let i = 0; i < accordianItems.length; i++) {
     accordianItems[i].addEventListener("click", function () {
-        // Toggle between adding and removing the "active" class,
-        // to highlight the button that controls the panel 
         this.classList.toggle("active");
     });
 }
+
+// For any extra help, visit: https://www.frontendmentor.io/solutions/faq-accordion-card-tXbt2mFzRc
