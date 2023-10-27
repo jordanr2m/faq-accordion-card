@@ -37,7 +37,6 @@ body {
     display: none;
 }
 
-
 .content-wrapper {
     width: 90%;
     max-width: 375px;
@@ -46,6 +45,8 @@ body {
     border-radius: 2rem;
     position: relative;
     /* Must set position to relative to get images to work */
+    height: auto;
+    margin-top: 7rem; /* Fixes content from getting cut off on top on certain mobile devices. */
 }
 
 .accordian {
@@ -70,7 +71,7 @@ h1 {
     position: relative;
 }
 
-.accordian-item h2:after {
+.accordian-item h2::after {
     content: url("../images/icon-arrow-down.svg");
     position: absolute;
     right: 0;
@@ -98,7 +99,7 @@ h1 {
 }
 
 /* Rotate Arrow down when active */
-.accordian-item.active h2:after {
+.accordian-item.active h2::after {
     content: url("../images/icon-arrow-down.svg");
     transform: scaleY(-1);
 }
@@ -131,6 +132,7 @@ h1 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       overflow: hidden;
+      margin-top: 0;
     }
 
     .image-container {
